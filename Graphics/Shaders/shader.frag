@@ -9,4 +9,7 @@ uniform sampler2D tex;
 void main()
 {
     Color = texture(tex, Tex);
+
+    if(Color.w < 1.0f)
+        discard;
 }
