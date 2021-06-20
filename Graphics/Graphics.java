@@ -28,18 +28,21 @@ public class Graphics {
         if(!glfwInit())
             System.out.println("GLFW failed to initialize!");
 
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-        if(fullscreen)
-            this.window = glfwCreateWindow(this.width, this.height, this.title, glfwGetPrimaryMonitor(), 0);
-        else
+        if(fullscreen) {
+            long monitor = glfwGetPrimaryMonitor();
+            this.window = glfwCreateWindow(glfwGetVideoMode(monitor).width(), glfwGetVideoMode(monitor).height(), this.title, glfwGetPrimaryMonitor(), 0);
+        } else {
             this.window = glfwCreateWindow(this.width, this.height, this.title, 0, 0);
-
+        }
+        
         glfwMakeContextCurrent(this.window);
 
-        glfwSwapInterval(1);
+        //glfwSwapInterval(1);
 
         GL.createCapabilities();
     }
