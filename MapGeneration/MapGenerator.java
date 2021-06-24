@@ -13,14 +13,14 @@ public class MapGenerator {
                 map.put(new Coordinates(i, j), ' ');
             }
         }
-        StreetT streets = new StreetT(map);
+        StreetGenerator streets = new StreetGenerator(map);
 
         SmallHouses smallHouses1 = new SmallHouses("Small Houses", map, 1);
         TowerBlock towerBlock1 = new TowerBlock("Tower", map, 1);
         Supermarket supermarket = new Supermarket("Billa", map);
 
         SmallHouses smallHouses2 = new SmallHouses("Small Houses2", map, 2);
-        SkyscraperT skyscraper = new SkyscraperT("Skyscraper", map);
+        SkyscraperGenerator skyscraper = new SkyscraperGenerator("Skyscraper", map);
         Mall mall = new Mall("Mall", map);
 
         SmallHouses smallHouses3 = new SmallHouses("Small Houses3", map, 3);

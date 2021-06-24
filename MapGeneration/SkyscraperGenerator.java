@@ -1,8 +1,8 @@
 import java.util.TreeMap;
 
-public class SkyscraperT extends Building {
+public class SkyscraperGenerator extends Building {
 
-    public SkyscraperT(String name, TreeMap<Coordinates, Character> map){
+    public SkyscraperGenerator(String name, TreeMap<Coordinates, Character> map){
         super(name);
         makeSkyscraper(map);
     }
@@ -34,8 +34,6 @@ public class SkyscraperT extends Building {
             }
         }
 
-        int index = 0;
-
         for(int count = 0; count < 7; count++, column++){
             for(int count2 = 0, my_row = row; count2 < 7; count2++, my_row++){
                 if(count == 0 && count2 == 3) {
@@ -46,12 +44,7 @@ public class SkyscraperT extends Building {
                         map.put(new Coordinates(column + 6 + i, my_row), 'w');
                     }
                 }
-                if(index == 0)
-                {
-                    map.put(new Coordinates(column, my_row), '^');
-                    index++;
-                }
-
+                map.put(new Coordinates(column, my_row), '^');
             }
             if(count == 3){
                 for(int i = 1; map.get(new Coordinates(column, row - i)) != 'w'; i++){
